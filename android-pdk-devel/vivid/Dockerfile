@@ -3,6 +3,7 @@ FROM ubuntu:vivid
 MAINTAINER vicamo@gmail.com
 
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu vivid main" > /etc/apt/sources.list.d/webupd8team-ubuntu-java.list && \
+	echo "deb http://archive.ubuntu.com/ubuntu/ trusty main" > /etc/apt/sources.list.d/trusty.list && \
 	dpkg --add-architecture i386 && \
 	apt-get update && \
 	(yes | apt-get install --no-install-recommends -y --force-yes \
@@ -27,6 +28,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu vivid main" > /et
 		libx11-dev \
 		libx11-dev:i386 \
 		libxml2-utils \
+		make=3.81-8.2ubuntu3 \
 		python-chardet \
 		unzip \
 		wget \
