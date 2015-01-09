@@ -27,6 +27,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" > /
 		libx11-dev \
 		libx11-dev:i386 \
 		libxml2-utils \
+		less \
 		python-chardet \
 		unzip \
 		wget \

@@ -28,6 +28,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" > /
 		libx11-dev \
 		libx11-dev:i386 \
 		libxml2-utils \
+		less \
 		make=3.81-8.2 \
 		python-chardet \
 		unzip \

@@ -28,6 +28,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu vivid main" > /et
 		libx11-dev \
 		libx11-dev:i386 \
 		libxml2-utils \
+		less \
 		make=3.81-8.2ubuntu3 \
 		python-chardet \
 		unzip \
