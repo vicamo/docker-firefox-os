@@ -33,6 +33,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" > /
 		unzip \
 		wget \
 		zip \
+		zlib1g-dev \
 		zlib1g-dev:i386 \
 		&& \
 	apt-get clean && \
