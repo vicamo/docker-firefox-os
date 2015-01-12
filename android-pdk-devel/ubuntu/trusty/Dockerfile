@@ -16,6 +16,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /e
 		flex \
 		g++-4.4-multilib \
 		g++-4.6-multilib \
+		g++-4.8-multilib \
 		g++-multilib \
 		git \
 		gnupg \
