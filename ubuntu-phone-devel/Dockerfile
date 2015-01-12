@@ -9,7 +9,3 @@ RUN echo "deb http://ppa.launchpad.net/phablet-team/tools/ubuntu vivid main" > /
 		&& \
 	apt-get clean && \
 	rm -f /var/lib/apt/lists/*_dists_*
-
-RUN useradd phablet
-USER phablet
-WORKDIR /home/phablet
