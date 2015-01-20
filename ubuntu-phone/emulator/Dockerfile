@@ -1,4 +1,4 @@
-FROM android-pdk-devel:vivid
+FROM android-pdk:vivid
 
 MAINTAINER vicamo@gmail.com
 
