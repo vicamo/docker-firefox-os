@@ -2,6 +2,7 @@ FROM vicamo/build-essential:ubuntu-core_armhf
 
 RUN apt-get update && \
 	apt-get build-dep --no-install-recommends -y --force-yes \
+		dialer-app \
 		ofono \
 		ofono-qt \
 		telepathy-ofono \
