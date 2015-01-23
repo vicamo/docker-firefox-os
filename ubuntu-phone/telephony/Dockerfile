@@ -7,6 +7,7 @@ RUN apt-get update && \
 		telepathy-ofono \
 		&& \
 	apt-get install --no-install-recommends -y --force-yes \
+		fakeroot \
 		git \
 		libusb-1.0-0-dev \
 		systemd \
