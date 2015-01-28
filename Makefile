@@ -9,10 +9,11 @@ endef
 # $(1): origin dir
 # $(2): transformed name
 # $(3): tag name
+# $(4): dep
 define def-docker-image-transformed-name
 .PHONY: $(2) clean-$(2)
 
-$(2): $(call transform_to_target_name,$(shell cat $(1)/Dockerfile | grep ^FROM | awk '{ print $$2; }'))
+$(2): $(call transform_to_target_name,$(4))
 	if ! docker inspect $(3) > /dev/null 2>&1; then \
 	  docker build -t $(3) $(1); \
 	fi
@@ -26,8 +27,9 @@ endef
 
 # $(1): origin dir
 # $(2): tag name
+# $(3): dep
 define def-docker-image
-$(call def-docker-image-transformed-name,$(1),$(call transform_to_target_name,$(2)),$(2))
+$(call def-docker-image-transformed-name,$(1),$(call transform_to_target_name,$(2)),$(2),$(3))
 endef
 
 # $(1): transformed name
@@ -54,23 +56,21 @@ all:
 
 .PHONY: build clean
 
-#########################
-# Immutable docker images
-
-$(eval $(call def-immutable-docker-image,debian:wheezy))
-$(eval $(call def-immutable-docker-image,debian:jessie))
-$(eval $(call def-immutable-docker-image,debian:sid))
-
-$(eval $(call def-immutable-docker-image,ubuntu:trusty))
-$(eval $(call def-immutable-docker-image,ubuntu:vivid))
-
-$(eval $(call def-immutable-docker-image,vicamo/ubuntu-core:vivid-armhf))
-
 ###########################################
 # Docker images provided by this repository
+
+DEPS :=
+TARGETS :=
 
 $(foreach f,$(shell find . -type f -name Dockerfile), \
   $(eval _name := $(shell echo $f | cut -d / -f 2)) \
   $(eval _tag := $(shell echo $f | cut -d / -f 3)) \
-  $(eval $(call def-docker-image,$(_name)/$(_tag),$(DOCKER_USER)$(_name):$(_tag))) \
+  $(eval _dep := $(shell cat $(_name)/$(_tag)/Dockerfile | grep ^FROM | awk '{ print $$2; }')) \
+  $(eval _target := $(DOCKER_USER)$(_name):$(_tag)) \
+  $(eval DEPS := $(DEPS) $(_dep)) \
+  $(eval TARGETS := $(TARGETS) $(_target)) \
+  $(eval $(call def-docker-image,$(_name)/$(_tag),$(_target),$(_dep))) \
 )
+
+$(foreach d,$(DEPS), \
+  $(if $(filter $d,$(TARGETS)),,$(eval $(call def-immutable-docker-image,$d))))
