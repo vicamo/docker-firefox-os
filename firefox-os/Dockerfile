@@ -1,4 +1,6 @@
-FROM android-pdk:trusty
+FROM vicamo/android-pdk:trusty
+
+MAINTAINER vicamo@gmail.com
 
 RUN apt-get update && \
 	apt-get install --no-install-recommends -y --force-yes \

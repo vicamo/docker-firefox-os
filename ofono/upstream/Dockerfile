@@ -1,5 +1,7 @@
 FROM vicamo/build-essential:ubuntu-core_armhf
 
+MAINTAINER vicamo@gmail.com
+
 RUN apt-get update && \
 	apt-get build-dep --no-install-recommends -y --force-yes \
 		ofono \
