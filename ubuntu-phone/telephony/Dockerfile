@@ -8,6 +8,7 @@ RUN apt-get update && \
 		ofono \
 		ofono-qt \
 		telepathy-ofono \
+		telephony-service \
 		&& \
 	apt-get install --no-install-recommends -y --force-yes \
 		ccache \
