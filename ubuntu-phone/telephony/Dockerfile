@@ -7,6 +7,7 @@ RUN apt-get update && \
 		dialer-app \
 		ofono \
 		ofono-qt \
+		telepathy-mission-control-5 \
 		telepathy-ofono \
 		telephony-service \
 		&& \
