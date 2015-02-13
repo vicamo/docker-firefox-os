@@ -53,6 +53,10 @@ endef
 
 all:
 	@echo "What do you want to do today?"
+	@echo
+	@for t in $(foreach t,$(TARGETS),$(call transform_to_target_name,$(t))); do \
+	  echo $$t; \
+	done
 
 .PHONY: build clean
 
@@ -66,8 +70,9 @@ $(foreach f,$(shell find . -type f -name Dockerfile), \
   $(eval _name := $(shell echo $f | cut -d / -f 2)) \
   $(eval _tag := $(shell echo $f | cut -d / -f 3)) \
   $(eval _dep := $(shell cat $(_name)/$(_tag)/Dockerfile | grep ^FROM | awk '{ print $$2; }')) \
+  $(if $(filter $(_dep),$(DEPS)),,$(eval DEPS := $(DEPS) $(_dep))) \
   $(eval _target := $(DOCKER_USER)$(_name):$(_tag)) \
-  $(eval DEPS := $(DEPS) $(_dep)) \
+  $(if $(filter $(_target),$(TARGETS)),$(error Duplicated target: $(_target))) \
   $(eval TARGETS := $(TARGETS) $(_target)) \
   $(eval $(call def-docker-image,$(_name)/$(_tag),$(_target),$(_dep))) \
 )
