@@ -3,6 +3,8 @@ FROM vicamo/android-pdk:vivid
 MAINTAINER vicamo@gmail.com
 
 RUN echo "deb http://ppa.launchpad.net/phablet-team/tools/ubuntu vivid main" > /etc/apt/sources.list.d/phablet-team-ubuntu-tools-vivid.list && \
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5C5364B55E51A24C && \
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 && \
 	apt-get update && \
 	apt-get install --no-install-recommends -y \
 		libasound2-dev:i386 \
