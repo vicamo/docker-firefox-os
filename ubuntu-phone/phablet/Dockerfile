@@ -10,6 +10,7 @@ RUN echo "deb http://ppa.launchpad.net/phablet-team/tools/ubuntu vivid main" > /
 		libasound2-dev:i386 \
 		libesd0-dev:i386 \
 		libpulse-dev:i386 \
+		openssh-client \
 		phablet-tools \
 		ubuntu-device-flash \
 		&& \
