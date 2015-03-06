@@ -19,6 +19,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu vivid main restricted universe mu
 		libpulse-dev:i386 \
 		openssh-client \
 		phablet-tools \
+		pxz \
 		ubuntu-device-flash \
 		ubuntu-emulator \
 		&& \
