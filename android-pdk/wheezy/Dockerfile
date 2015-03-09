@@ -3,6 +3,7 @@ FROM debian:wheezy
 MAINTAINER vicamo@gmail.com
 
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" > /etc/apt/sources.list.d/webupd8team-ubuntu-java.list && \
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 && \
 	dpkg --add-architecture i386 && \
 	apt-get update && \
 	(yes | apt-get install --no-install-recommends -y --force-yes \
@@ -16,7 +17,6 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" > /
 		flex \
 		g++-4.4-multilib \
 		g++-4.6-multilib \
-		g++-4.8-multilib \
 		g++-multilib \
 		git \
 		gnupg \
@@ -38,8 +38,7 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" > /
 		&& \
 	apt-get clean && \
 	rm -rf /var/cache/oracle-jdk6-installer && \
-	ln -s mesa/libGL.so /usr/lib/i386-linux-gnu/libGL.so && \
-	ln -s libGL.so.1.2.0 /usr/lib/i386-linux-gnu/mesa/libGL.so && \
+	ln -s libGL.so.1.2.0 /usr/lib/i386-linux-gnu/libGL.so && \
 	rm -f /var/lib/apt/lists/*_dists_*
 
 RUN wget -O /usr/bin/repo https://storage.googleapis.com/git-repo-downloads/repo && \
