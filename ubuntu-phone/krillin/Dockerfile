@@ -1,4 +1,4 @@
-FROM vicamo/ubuntu-phone:phablet
+FROM vicamo/ubuntu-phone-phablet:vivid
 
 MAINTAINER vicamo@gmail.com
 
