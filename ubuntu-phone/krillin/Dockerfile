@@ -1,6 +1,4 @@
-FROM vicamo/ubuntu-phone-phablet:vivid
-
-MAINTAINER vicamo@gmail.com
+FROM vicamo/ubuntu-phablet:vivid
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu/ utopic universe" > /etc/apt/sources.list.d/utopic-mingw32.list && \
 	apt-get update && \
