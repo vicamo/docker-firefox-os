@@ -1,6 +1,4 @@
-FROM vicamo/android-pdk:vivid
-
-MAINTAINER vicamo@gmail.com
+FROM vicamo/android-pdk:vivid-oracle-java-6
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu vivid main restricted universe multiverse" > /etc/apt/sources.list.d/archive.ubuntu.com_vivid.list && \
 	echo "deb-src http://archive.ubuntu.com/ubuntu vivid main restricted universe multiverse" >> /etc/apt/sources.list.d/archive.ubuntu.com_vivid.list && \

@@ -1,6 +1,4 @@
-FROM vicamo/android-pdk:trusty
-
-MAINTAINER vicamo@gmail.com
+FROM vicamo/android-pdk:openjdk-7
 
 RUN apt-get update && \
 	apt-get install --no-install-recommends -y --force-yes \
