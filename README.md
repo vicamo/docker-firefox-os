@@ -1,4 +1,4 @@
-docker-images
-=============
+docker-firefox-os
+=================
 
-Various Dockerfile collection ready for use
+Dockerfile for firefox os platform development.
