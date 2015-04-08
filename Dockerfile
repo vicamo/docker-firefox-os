@@ -5,5 +5,6 @@ RUN apt-get update \
 		autoconf2.13 \
 		libdbus-glib-1-2 \
 		libxt6 \
+		time \
 	&& apt-get clean \
 	&& rm -f /var/lib/apt/lists/*_dists_*
